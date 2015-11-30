@@ -193,9 +193,8 @@ def validate_dna(s):
     DNA = True
 
     for i in s:
-        if i != 'a' or i != 't' or i != 'g' or i != 'c':
+        if i != 'a' and i != 't' and i != 'g' and i != 'c':
             DNA = False
-
     return DNA
 
 
