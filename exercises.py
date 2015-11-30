@@ -3,7 +3,10 @@ def reverse_list(l):
     """
     Reverses order of elements in list l.
     """
-    return None
+    new_l = l
+    new_l.reverse()
+
+    return new_l
 
 
 def test_reverse_list():
