@@ -211,7 +211,21 @@ def base_pair(c):
     of the base pair. If the base is not recognized,
     return 'unknown'.
     """
-    return None
+
+    c = c.lower()
+
+    to_return = 'unknown'
+
+    if(c == 'a'):
+        to_return = 't'
+    elif(c == 't'):
+        to_return = 'a'
+    elif(c == 'g'):
+        to_return = 'c'
+    elif(c == 'c'):
+        to_return = 'g'
+
+    return to_return
 
 
 def test_base_pair():
@@ -234,7 +248,15 @@ def transcribe_dna_to_rna(s):
     Return string s with each letter T replaced by U.
     Result is always uppercase.
     """
-    return None
+
+    s = s.upper()
+    new_string = ""
+
+    for i in s:
+        if(i == 'T'):
+            i = 'U'
+        new_string = new_string + i
+    return new_string
 
 
 def test_transcribe_dna_to_rna():
@@ -249,7 +271,22 @@ def get_complement(s):
     Return the DNA complement in uppercase
     (A -> T, T-> A, C -> G, G-> C).
     """
-    return None
+
+    s = s.upper()
+
+    new_string = ""
+
+    for i in s:
+        if(i == 'A'):
+            new_string = new_string + 'T'
+        elif(i == 'T'):
+            new_string = new_string + 'A'
+        elif(i == 'G'):
+            new_string = new_string + 'C'
+        elif(i == 'C'):
+            new_string = new_string + 'G'
+
+    return new_string
 
 
 def test_get_complement():
@@ -264,7 +301,25 @@ def get_reverse_complement(s):
     Return the reverse complement of string s
     (complement reversed in order).
     """
-    return None
+
+    s = s.upper()
+
+    string_list = []
+
+    for i in s:
+        if(i == 'A'):
+            string_list.append('T')
+        elif(i == 'T'):
+            string_list.append('A')
+        elif(i == 'G'):
+            string_list.append('C')
+        elif(i == 'C'):
+            string_list.append('G')
+
+    reversed_string_list = string_list[::-1]
+    reversed_string = "".join(reversed_string_list)
+
+    return reversed_string
 
 
 def test_get_reverse_complement():
