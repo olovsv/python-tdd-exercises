@@ -333,7 +333,10 @@ def remove_substring(substring, string):
     """
     Returns string with all occurrences of substring removed.
     """
-    return None
+
+    new_string = string.replace(substring,"")
+
+    return new_string
 
 
 def test_remove_substring():
