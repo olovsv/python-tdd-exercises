@@ -354,7 +354,22 @@ def get_position_indices(triplet, dna):
     in a DNA sequence. We start counting from 0
     and jump by 3 characters from one position to the next.
     """
-    return None
+
+    index_list = []
+    kmer_list = []
+
+    while(len(dna) >= 3):
+        kmer_list.append(dna[0:3])
+        dna = dna[3:]
+
+    i = 0
+    for k in kmer_list:
+        if(triplet == k):
+            index_list.append(i)
+        i = i + 1
+
+
+    return index_list
 
 
 def test_get_position_indices():
