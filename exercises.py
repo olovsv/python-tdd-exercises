@@ -441,7 +441,18 @@ def read_column(file_name, column_number):
     Reads column column_number from file file_name
     and returns the values as floats in a list.
     """
-    return None
+
+    column_file = open(file_name)
+    columns = []
+    columns2return = []
+    column_number -=1
+    #column_number -= 1
+    for line in column_file:
+        column_list = line.split()
+        if len(column_list)>0:
+            columns2return.append(float(column_list[column_number]))
+
+    return columns2return
 
 
 def test_read_column():
@@ -480,7 +491,36 @@ def character_statistics(file_name):
     Use the isalpha() method to figure out
     whether the character is in the alphabet.
     """
-    return None
+
+    this_file = open(file_name)
+    all_characters = []
+    character_abundance = {}
+    for line in this_file:
+        line = line.lower()
+        while(len(line) > 0):
+            character = line[:1]
+            character_abundance[character] = 0
+            if(character.isalpha()):
+                all_characters.append(character)
+            line = line[1:]
+
+    for k in all_characters:
+        character_abundance[k] += 1
+
+    all_characters = list(set(all_characters))
+
+    lowest_character = all_characters[0]
+    highest_character = all_characters[0]
+
+    for j in all_characters:
+        if(character_abundance[j] < character_abundance[lowest_character]):
+            lowest_character = j
+        if(character_abundance[j] > character_abundance[highest_character]):
+            highest_character = j
+
+    returning_tuple = (highest_character,lowest_character)
+
+    return returning_tuple
 
 
 def test_character_statistics():
@@ -558,4 +598,10 @@ def pythagorean_triples(n):
 # ------------------------------------------------------------------------------
 
 def test_pythagorean_triples():
-    pass  # so far we do not test anything, check also test coverage
+
+    testing_list = [5,10,20]
+    assert(pythagorean_triples(5)) == [(3, 4, 5)]
+    assert(pythagorean_triples(10)) == [(3, 4, 5), (6, 8, 10)]
+    assert(pythagorean_triples(20)) == [(3, 4, 5), (6, 8, 10), (5, 12, 13), (9, 12, 15), (8, 15, 17), (12, 16, 20)]
+
+    #pass  # so far we do not test anything, check also test coverage
