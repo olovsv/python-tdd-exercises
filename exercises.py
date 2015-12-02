@@ -388,7 +388,29 @@ def get_3mer_usage_chart(s):
     The list is alphabetically sorted by the name
     of the 3-mer.
     """
-    return None
+
+    kmers = []
+    unique_kmers = []
+    kmer_occurence = {}
+    kmer_taken = {}
+    while(len(s) >= 3):
+        kmer = s[0:3]
+        kmers.append(s[0:3])
+        s = s[1:]
+        kmer_occurence[kmer] = 0
+
+
+    for i in kmers:
+        kmer_occurence[i] += 1
+
+    kmers = list(set(kmers))
+    kmers = sorted(kmers)
+    kmers_list = []
+
+    for k in kmers:
+            kmers_list.append((k,kmer_occurence[k]))
+
+    return kmers_list
 
 
 def test_get_3mer_usage_chart():
